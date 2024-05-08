@@ -4,9 +4,10 @@ from PIL import Image
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 import matplotlib.pyplot as plt
+import joblib
 
 # Load your trained model
-model = load_model('x_ray_pred.pkl')
+model = joblib_load('x_ray_pred.pkl')
 
 # Define the class labels for your project
 class_labels = ["Atelectasis", "Cardiomegaly", "Effusion", "Infiltration",

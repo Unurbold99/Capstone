@@ -18,7 +18,6 @@ class_labels = ["Atelectasis", "Cardiomegaly", "Effusion", "Infiltration",
 # Function to make predictions on uploaded image
 def predict_image(image):
     img = np.array(image)
-    img /= 255.0  # Normalize pixel values
     prediction = model.predict(img)
     return prediction
 

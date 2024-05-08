@@ -15,9 +15,10 @@ class_labels = ["Atelectasis", "Cardiomegaly", "Effusion", "Infiltration",
                   "Mass", "Nodule", "Pneumonia", "Pneumothorax",
                   "Consolidation", "No Finding"]
 
+# Function to make predictions on uploaded image
 def predict_image(image):
     img = np.array(image)
-    img = tf.image.resize(img.transpose((2, 0, 1)), (320, 320))  # Resize image to match model input shape
+    img = tf.image.resize(img, (320, 320))  # Resize image to match model input shape
     img = np.expand_dims(img, axis=0)  # Add batch dimension
     img /= 255.0  # Normalize pixel values
     prediction = model.predict(img)

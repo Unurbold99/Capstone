@@ -44,7 +44,7 @@ if st.button("Make Prediction"):
         # Convert the image to a numpy array
         image = np.array(image)
         # Resize the image to the expected size
-        image = tf.image.resize(image, (320, 320))
+        image = image.resize((320, 320))
         # Convert the image to a numpy array
         image = np.array(image)
         # Reshape the image to the expected input shape

@@ -6,7 +6,6 @@ from tensorflow.keras.models import load_model
 import matplotlib.pyplot as plt
 import joblib
 import torch
-import cv2
 
 # Load the trained model
 with open('x_ray_pred.pkl', 'rb') as f:

@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import joblib
 
 # Load your trained model
-model = joblib_load('x_ray_pred.pkl')
+model = joblib.load('x_ray_pred.pkl')
 
 # Define the class labels for your project
 class_labels = ["Atelectasis", "Cardiomegaly", "Effusion", "Infiltration",

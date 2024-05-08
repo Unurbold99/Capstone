@@ -21,7 +21,7 @@ image_file = st.file_uploader("Select an image", type=["jpg", "jpeg", "png"])
 if st.button("Make Prediction"):
     if image_file is not None:
         # Load the uploaded image
-        image = image.open(image_file)
+        image = Image.open(image_file)
         # Convert the image to a numpy array
         image = np.array(image)
         # Resize the image to the expected size

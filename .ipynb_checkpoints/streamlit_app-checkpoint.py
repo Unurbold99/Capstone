@@ -10,25 +10,6 @@ import torch
 # Load the trained model
 model = joblib.load('x_ray_pred.pkl')
 
-# Define a function to make predictions
-def predict(image):
-    # Convert the image to a numpy array
-    image = np.array(image)
-    # Resize the image to the expected size
-    image = cv2.resize(image, (224, 224))
-    # Convert the image to a numpy array
-    image = np.array(image)
-    # Reshape the image to the expected input shape
-    image = image.reshape((1, 224, 224, 3))
-    # Make the prediction
-    predictions = model.predict(image)
-    # Convert the predictions to class labels
-    class_labels = ["Atelectasis", "Cardiomegaly", "Effusion", "Infiltration",
-                    "Mass", "Nodule", "Pneumonia", "Pneumothorax",
-                    "Consolidation", "No Finding"]
-    predicted_class_labels = [class_labels[i] for i in np.argmax(predictions, axis=1)[0]]
-    return predicted_class_labels
-
 # Create the Streamlit app
 st.title("X-Ray Classification App")
 st.write("Upload an X-ray image to make a prediction:")
@@ -40,7 +21,7 @@ image_file = st.file_uploader("Select an image", type=["jpg", "jpeg", "png"])
 if st.button("Make Prediction"):
     if image_file is not None:
         # Load the uploaded image
-        image = Image.open(image_file)
+        image = image.open(image_file)
         # Convert the image to a numpy array
         image = np.array(image)
         # Resize the image to the expected size

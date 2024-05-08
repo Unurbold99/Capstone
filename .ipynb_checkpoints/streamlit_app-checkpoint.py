@@ -14,6 +14,10 @@ model = joblib.load('x_ray_pred.pkl')
 def predict(image):
     # Convert the image to a numpy array
     image = np.array(image)
+    # Resize the image to the expected size
+    image = cv2.resize(image, (224, 224))
+    # Convert the image to a numpy array
+    image = np.array(image)
     # Reshape the image to the expected input shape
     image = image.reshape((1, 224, 224, 3))
     # Make the prediction
@@ -39,14 +43,18 @@ if st.button("Make Prediction"):
         image = Image.open(image_file)
         # Convert the image to a numpy array
         image = np.array(image)
+        # Resize the image to the expected size
+        image = cv2.resize(image, (224, 224))
+        # Convert the image to a numpy array
+        image = np.array(image)
         # Reshape the image to the expected input shape
         image = image.reshape((1, 224, 224, 3))
         # Make the prediction
         predictions = model.predict(image)
         # Convert the predictions to class labels
         class_labels = ["Atelectasis", "Cardiomegaly", "Effusion", "Infiltration",
-                         "Mass", "Nodule", "Pneumonia", "Pneumothorax",
-                         "Consolidation", "No Finding"]
+                          "Mass", "Nodule", "Pneumonia", "Pneumothorax",
+                          "Consolidation", "No Finding"]
         predicted_class_labels = [class_labels[i] for i in np.argmax(predictions, axis=1)[0]]
         # Display the predicted class labels
         st.write("Predicted class labels:", predicted_class_labels)

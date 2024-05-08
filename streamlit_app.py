@@ -44,11 +44,11 @@ if st.button("Make Prediction"):
         # Convert the image to a numpy array
         image = np.array(image)
         # Resize the image to the expected size
-        image = cv2.resize(image, (224, 224))
+        image = tf.image.resize(img, (320, 320))
         # Convert the image to a numpy array
         image = np.array(image)
         # Reshape the image to the expected input shape
-        image = image.reshape((1, 224, 224, 3))
+        image = image.reshape((1, 320, 320, 3))
         # Make the prediction
         predictions = model.predict(image)
         # Convert the predictions to class labels

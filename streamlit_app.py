@@ -47,8 +47,6 @@ if st.button("Make Prediction"):
         image = image.resize((320, 320))
         # Convert the image to a numpy array
         image = np.array(image)
-        # Reshape the image to the expected input shape
-        image = image.reshape((1, 320, 320, 3))
         # Make the prediction
         predictions = model.predict(image)
         # Convert the predictions to class labels

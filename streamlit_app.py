@@ -8,8 +8,7 @@ import joblib
 import torch
 
 # Load the trained model
-with open('x_ray_pred.pkl', 'rb') as f:
-    model = pickle.load(f)
+model = joblib.load('x_ray_pred.pkl')
 
 # Define a function to make predictions
 def predict(image):

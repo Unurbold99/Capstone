@@ -1,2 +1,2 @@
 # Capstone
-Capstone Project on X-ray Deep-Learning
+ X-Ray Deep-Learning

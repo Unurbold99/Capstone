@@ -8,7 +8,7 @@ from tensorflow.keras.applications.vgg16 import decode_predictions
 from fastai.vision.all import *
 
 # Load the model
-model = load_model('model.h5')
+model = tf.keras.models.load_model('model.h5')
 
 # Define a function to make predictions
 def make_prediction(image):

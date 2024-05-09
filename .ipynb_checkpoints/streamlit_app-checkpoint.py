@@ -7,9 +7,11 @@ import matplotlib.pyplot as plt
 import joblib
 import torch
 from fastai.vision.all import *
+import pickle
 
-# Load the trained model
-model = load_learner('export.pkl')
+# Load the model
+with open('export.pkl', 'rb') as f:
+    model = pickle.load(f)
 
 # Create the Streamlit app
 st.title("X-Ray Classification App")

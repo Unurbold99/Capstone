@@ -1,44 +1,33 @@
 import streamlit as st
 import numpy as np
 from PIL import Image
-import tensorflow as tf
-from tensorflow.keras.models import load_model
 import matplotlib.pyplot as plt
 import joblib
 import torch
 from fastai.vision.all import *
+from fastcore.all import *
 import pickle
 
-# Load the model
-learn = load_learner('model.pkl')
 
-# Create the Streamlit app
-st.title("X-Ray Classification App")
-st.write("Upload an X-ray image to make a prediction:")
+## LOAD MODEl
+learn_inf = load_learner("export.pkl")
+## CLASSIFIER
+def classify_img(data):
+    pred, pred_idx, probs = learn_inf.predict(data)
+    return pred, probs[pred_idx]
+## STREAMLIT
+st.title("X-Ray Classifier")
+bytes_data = None
+uploaded_image = st.file_uploader("Upload Picture:")
+if uploaded_image:
+    bytes_data = uploaded_image.getvalue()
+    st.image(bytes_data, caption="Uploaded image")   
+if bytes_data:
+    classify = st.button("CLASSIFY!")
+    if classify:
+        label, confidence = classify_img(bytes_data)
+        st.write(f"It is a {label}! ({confidence:.04f})")
 
-# Create a file uploader
-image_file = st.file_uploader("Select an image", type=["jpg", "jpeg", "png"])
 
-# Create a button to trigger the prediction
-if st.button("Make Prediction"):
-    if image_file is not None:
 
-        image = Image.open(image_file)
-
-        image = np.array(image)
-
-        image = image.resize((320, 320))
-
-        image = np.array(image)
-        predictions = model.predict(image)
-
-        class_labels = ["Atelectasis", "Cardiomegaly", "Effusion", "Infiltration",
-                          "Mass", "Nodule", "Pneumonia", "Pneumothorax",
-                          "Consolidation", "No Finding"]
-        predicted_class_labels = [class_labels[i] for i in np.argmax(predictions, axis=1)[0]]
-
-        st.write("Predicted class labels:", predicted_class_labels)
-    else:
-        st.write("Please upload an image.")
-        
         

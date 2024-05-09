@@ -6,6 +6,7 @@ from tensorflow.keras.models import load_model
 import matplotlib.pyplot as plt
 import joblib
 import torch
+from fastai.vision.all import *
 
 # Load the trained model
 model = joblib.load('x_ray_pred.pkl')

@@ -27,7 +27,7 @@ if st.button("Make Prediction"):
 
         image = np.array(image)
 
-        image = image.resize((320, 320))
+        image = image.resize((224, 224))
 
         predictions = model.predict(image)
 

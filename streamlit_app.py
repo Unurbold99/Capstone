@@ -29,7 +29,6 @@ if st.button("Make Prediction"):
         image = image.resize((320, 320))
         # Convert the image to a numpy array
         image = np.array(image)
-        # Make the prediction
         predictions = model.predict(image)
         # Convert the predictions to class labels
         class_labels = ["Atelectasis", "Cardiomegaly", "Effusion", "Infiltration",

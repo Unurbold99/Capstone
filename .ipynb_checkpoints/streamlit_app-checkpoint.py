@@ -9,7 +9,7 @@ import torch
 from fastai.vision.all import *
 
 # Load the trained model
-model = load_learner('x_ray_pred.pkl')
+model = load_learner('export.pkl')
 
 # Create the Streamlit app
 st.title("X-Ray Classification App")

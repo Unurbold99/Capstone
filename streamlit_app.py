@@ -10,7 +10,7 @@ from fastai.vision.all import *
 import pickle
 
 # Load the model
-learn = load_learner('export.pkl')
+model = load_learner('export.pkl')
 
 # Create the Streamlit app
 st.title("X-Ray Classification App")
